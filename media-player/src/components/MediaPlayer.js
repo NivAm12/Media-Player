@@ -1,12 +1,12 @@
-
-import React, {useState, useEffect, useRef} from 'react';
+import React, {useEffect, useRef} from 'react';
 import VideoJs from 'video.js';
 import "videojs-watermark";
 import 'video.js/dist/video-js.css';
 
+
 const MediaPlayer = (props) => {
 
-    // DATA:
+    // DATA
     const audio = useRef(new Audio(props.audioSource))
     const playAudio = useRef(false);
     const playerRef = useRef(null);
@@ -20,9 +20,11 @@ const MediaPlayer = (props) => {
         //fluid: true
     };
 
+    // METHODS
     const onPlayerPlay = (player) => {
         playAudio.current = true;
 
+        // check if delay is necessary:
         if(player.currentTime() >= props.audioPauseTime) {
             audio.current.play();
         }
@@ -38,6 +40,7 @@ const MediaPlayer = (props) => {
     }
 
     const onPlayerRuns = (player) => {
+        // check if the video is close to endind, and pause the audio if yes
         if(player.remainingTime() <= props.audioPauseTime){
             onPlayerPause();
         }
@@ -50,6 +53,13 @@ const MediaPlayer = (props) => {
             audio.current.currentTime = player.currentTime();
             player.on("play", () => onPlayerPlay(player));
             player.on("pause", onPlayerPause);
+            // player.watermark({
+            //     file: props.watermark,
+            //     xpos: 50,
+            //     ypos: 50,
+            //     xrepeat: 0,
+            //     opacity: 0.5,
+            // });
             player.setInterval(() => onPlayerRuns(player), 200);
         });
     }
@@ -60,6 +70,8 @@ const MediaPlayer = (props) => {
         }
     });
 
+
+    // RENDER
     return (
     <div>   
         <video 

@@ -8,9 +8,9 @@ function App() {
   return (
     <div className="App">
       <MediaPlayer
-        videoSource="//d2zihajmogu5jn.cloudfront.net/bipbop-advanced/bipbop_16x9_variant.m3u8"
+        videoSource="https://example.com/index.m3u8"
         audioSource="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
-        thumbnail={gistIcon}
+        watermark={gistIcon}
         audioPauseTime={3}
       />
     </div>
