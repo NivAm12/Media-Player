@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <MediaPlayer
-        videoSource="https://firebasestorage.googleapis.com/v0/b/trom-hardama-dev.appspot.com/o/trom-hardama.appspot.com%2Fmusic%2FbackgroundMusic_13_01.mp3?alt=media&token=f79d8204-e83a-4b6e-9758-4016415571b8"
+        videoSource="https://storage.googleapis.com/gist-25f32.appspot.com/generated-videos/AitmrjWr/master-playlist.m3u8?GoogleAccessId=firebase-adminsdk-tf1vj%40gist-25f32.iam.gserviceaccount.com&Expires=16725225600&Signature=jJulnVeKAmEw%2FtJQ49p0XzIGpnntG78sSJ4%2BsSbn6wXPkzYxRaVBKQeeYuRqIkcMdUKNAOJAkZ5A8Z2OK89ggUOyP2u0JH%2BHmMVaHyMfaghYIcaRi4m8HwaQzoReop6vrTak8XVfVCggbDtSsx%2Boxj5fryRtoN0qBo6d4drxZyaAdHKycEP467PTmgYAo8ZuJ33i24kuQlVI3uUVlREHHqlQbsE%2B4dO7D2%2Bwo2ozTewBr9F3wc6djQScmUm8YD8Iy9k5mJs9F5EZT9zVYwYtLNLM3oJdcnid92tWVDCXlwXVKzVIO20ggXTLYo2gy71qvi1aQzo0eEnyrCJV7jtFww%3D%3D"
         audioSource="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
         watermark={gistIcon}
         audioPauseTime={3}
