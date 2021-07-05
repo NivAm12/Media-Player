@@ -1,9 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import VideoJs from 'video.js';
-//import watermark from 'videojs-watermark';
 import 'video.js/dist/video-js.css';
-import 'videojs-watermark/dist/videojs-watermark.css';
-
 import '../style/MediaPlayer.css'
 
 const MediaPlayer = (props) => {
@@ -56,13 +53,6 @@ const MediaPlayer = (props) => {
             audio.current.currentTime = player.currentTime();
             player.on("play", () => onPlayerPlay(player));
             player.on("pause", onPlayerPause);
-            // player.watermark({
-            //     file: props.watermark,
-            //     xpos: 150,
-            //     ypos: 333,
-            //     xrepeat: 0,
-            //     opacity: 0.5,
-            // });
             player.setInterval(() => onPlayerRuns(player), 200);
         });
     }
