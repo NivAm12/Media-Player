@@ -20,11 +20,20 @@ const MediaPlayer = (props) => {
         //fluid: true
     };
 
+    const onPlayerPlay = (player) => {
+        if(player.currentTime() >= props.audioPauseTime) {
+            audio.current.play();
+        }
+        else{
+            setTimeout(() => audio.current.play(), props.audioPauseTime * 1000);
+        }
+    }
+
     const setPlayerInitialSettings = () => {
         const player = VideoJs(playerRef.current, videoOptions, () => {
             player.src(props.videoSource);
             audio.current.currentTime = player.currentTime();
-            player.on("play", () => audio.current.play());
+            player.on("play", () => onPlayerPlay(player));
             player.on("pause", () => audio.current.pause());
         });
     }
