@@ -8,7 +8,7 @@ const MediaPlayer = (props) => {
 
     // DATA:
     const audio = useRef(new Audio(props.audioSource))
-    const playVideoAndAudio = useRef(false);
+    const playAudio = useRef(false);
     const playerRef = useRef(null);
 
     const videoOptions = {
@@ -21,20 +21,36 @@ const MediaPlayer = (props) => {
     };
 
     const onPlayerPlay = (player) => {
+        playAudio.current = true;
+
         if(player.currentTime() >= props.audioPauseTime) {
             audio.current.play();
         }
         else{
-            setTimeout(() => audio.current.play(), props.audioPauseTime * 1000);
+            const timeToDelay = ((props.audioPauseTime) - player.currentTime()) * 1000;
+            setTimeout(() => playAudio.current ? audio.current.play(): null, timeToDelay);
+        }
+    }
+
+    const onPlayerPause = () => {
+        playAudio.current = false;
+        audio.current.pause();
+    }
+
+    const onPlayerRuns = (player) => {
+        if(player.remainingTime() <= props.audioPauseTime){
+            onPlayerPause();
         }
     }
 
     const setPlayerInitialSettings = () => {
         const player = VideoJs(playerRef.current, videoOptions, () => {
+            // set the props of the player:
             player.src(props.videoSource);
             audio.current.currentTime = player.currentTime();
             player.on("play", () => onPlayerPlay(player));
-            player.on("pause", () => audio.current.pause());
+            player.on("pause", onPlayerPause);
+            player.setInterval(() => onPlayerRuns(player), 200);
         });
     }
 
