@@ -3,6 +3,7 @@ import VideoJs from 'video.js';
 import 'video.js/dist/video-js.css';
 import '../style/MediaPlayer.css'
 
+
 const MediaPlayer = (props) => {
 
     // DATA
@@ -46,7 +47,6 @@ const MediaPlayer = (props) => {
     }
 
     const setPlayerInitialSettings = () => {
-        //VideoJs.registerPlugin('watermark', watermark);
         const player = VideoJs(playerRef.current, videoOptions, () => {
             // set the props of the player:
             player.src(props.videoSource);
@@ -66,16 +66,18 @@ const MediaPlayer = (props) => {
 
     // RENDER
     return (
+    <div style={{width: window.innerWidth, height: window.innerHeight}}>
     <div className='videoApp'>
         <div data-vjs-player>
         <video 
         className="video-js"
-        ref={playerRef}/>
+        ref={playerRef}
+        />
         </div>
-        <img src={props.watermark} className="watermark"/>
+    </div>
+    <img src={props.watermark} className='watermark'/>
     </div>
     );
 }
 
 export default MediaPlayer;
-
