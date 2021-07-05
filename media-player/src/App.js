@@ -8,7 +8,7 @@ function App() {
   return (
     <div className="App">
       <MediaPlayer
-        videoSource="https://example.com/index.m3u8"
+        videoSource="https://firebasestorage.googleapis.com/v0/b/trom-hardama-dev.appspot.com/o/trom-hardama.appspot.com%2Fmusic%2FbackgroundMusic_13_01.mp3?alt=media&token=f79d8204-e83a-4b6e-9758-4016415571b8"
         audioSource="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
         watermark={gistIcon}
         audioPauseTime={3}
