@@ -72,6 +72,7 @@ const MediaPlayer = (props) => {
         <video 
         className="video-js"
         ref={playerRef}
+        disablePictureInPicture
         />
         <img src={props.watermark} className='watermark'/>
         </div>

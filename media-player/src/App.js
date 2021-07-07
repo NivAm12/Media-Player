@@ -1,9 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import MediaPlayer from './components/MediaPlayer';
-import gistIcon from './icons/gistIcon.ico';
 import gistImg from './icons/gistImg2.png';
-
 
 
 function App() {
