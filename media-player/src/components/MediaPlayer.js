@@ -10,7 +10,6 @@ const MediaPlayer = (props) => {
     const audio = useRef(new Audio(props.audioSource))
     const playAudio = useRef(false);
     const playerRef = useRef(null);
-    const videoRef = createRef();
     
     const videoOptions = {
         autoplay: false,
@@ -18,7 +17,7 @@ const MediaPlayer = (props) => {
         aspectRatio: '16:9',
         responsive: true,
         controls: true,
-        //fluid: true
+        fluid: true
     };
 
     // METHODS
@@ -54,7 +53,7 @@ const MediaPlayer = (props) => {
             audio.current.currentTime = player.currentTime();
             player.on("play", () => onPlayerPlay(player));
             player.on("pause", onPlayerPause);
-            player.one('doubleClick', () => console.log('ss'))
+            player.tech_.off('dbclick')
             player.setInterval(() => onPlayerRuns(player), 200);
         });
     }
@@ -68,14 +67,14 @@ const MediaPlayer = (props) => {
 
     // RENDER
     return (
-    <div className='videoApp' ref={videoRef}>
+    <div className='videoApp'>
         <div data-vjs-player>
         <video 
         className="video-js"
         ref={playerRef}
         />
-        </div>
         <img src={props.watermark} className='watermark'/>
+        </div>
     </div>
     );
 }
