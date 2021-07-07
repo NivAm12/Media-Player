@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useEffect, useRef, createRef} from 'react';
 import VideoJs from 'video.js';
 import 'video.js/dist/video-js.css';
 import '../style/MediaPlayer.css'
@@ -10,6 +10,7 @@ const MediaPlayer = (props) => {
     const audio = useRef(new Audio(props.audioSource))
     const playAudio = useRef(false);
     const playerRef = useRef(null);
+    const videoRef = createRef();
     
     const videoOptions = {
         autoplay: false,
@@ -53,6 +54,7 @@ const MediaPlayer = (props) => {
             audio.current.currentTime = player.currentTime();
             player.on("play", () => onPlayerPlay(player));
             player.on("pause", onPlayerPause);
+            player.one('doubleClick', () => console.log('ss'))
             player.setInterval(() => onPlayerRuns(player), 200);
         });
     }
@@ -66,16 +68,14 @@ const MediaPlayer = (props) => {
 
     // RENDER
     return (
-    <div style={{width: window.innerWidth, height: window.innerHeight}}>
-    <div className='videoApp'>
+    <div className='videoApp' ref={videoRef}>
         <div data-vjs-player>
         <video 
         className="video-js"
         ref={playerRef}
         />
         </div>
-    </div>
-    <img src={props.watermark} className='watermark'/>
+        <img src={props.watermark} className='watermark'/>
     </div>
     );
 }
